@@ -106,6 +106,32 @@ padding:8px 0;
 border-bottom:1px solid #333;
 }
 
+.logo{
+    width:130px;
+    height:130px;
+    object-fit:cover;
+    border-radius:50%;
+    border:3px solid #d4af37;
+
+    /* Golden Glow */
+    box-shadow:
+        0 0 10px #d4af37,
+        0 0 20px #d4af37,
+        0 0 40px #d4af37;
+
+    transition:0.4s ease;
+}
+
+/* Glow Animation */
+.logo:hover{
+    transform:scale(1.1);
+    box-shadow:
+        0 0 20px #ffd700,
+        0 0 40px #ffd700,
+        0 0 60px #ffd700;
+}
+
+
 .price{
 color:#d4af37;
 }
@@ -128,14 +154,54 @@ h1{font-size:28px;}
 .container{margin:20px;}
 }
 
-@keyframes goldPulse{
-    0%{ box-shadow:0 0 10px #d4af37; }
-    50%{ box-shadow:0 0 35px #ffd700; }
-    100%{ box-shadow:0 0 10px #d4af37; }
+.food-img{
+    width:120px;          /* make equal width & height */
+    height:120px;
+    object-fit:cover;     /* prevents image distortion */
+    border-radius:50%;    /* makes it round */
+    display:block;
+
+    border:3px solid #d4af37;
+    margin:20px 0 20px 10px;
+
+    /* Golden Glow */
+    box-shadow:
+        0 0 10px #d4af37,
+        0 0 25px #d4af37;
+
+    transition:0.4s ease;
 }
 
 .logo{
-    animation:goldPulse 2s infinite;
+    width:220px;          /* equal width & height */
+    height:220px;
+    object-fit:cover;     /* prevent stretching */
+    border-radius:50%;    /* make circle */
+    display:block;
+    margin:20px auto;     /* center align */
+
+    border:3px solid #d4af37;
+
+    /* Golden Glow */
+    box-shadow:
+        0 0 10px #d4af37,
+        0 0 25px #d4af37;
+
+    transition:0.4s ease;
+}
+
+.logo:hover{
+    transform:scale(1.1);
+    box-shadow:
+        0 0 20px #ffd700,
+        0 0 40px #ffd700;
+}
+
+.food-img:hover{
+    transform:scale(1.1);
+    box-shadow:
+        0 0 20px #ffd700,
+        0 0 40px #ffd700;
 }
 
 </style>
@@ -144,10 +210,10 @@ h1{font-size:28px;}
 <body>
 
 <div class="container">
-
-<div style="text-align:center; margin-bottom:10px; border-radius: 75%;">
-    <img src="images/logo.jpeg" style="width:130px; border-radius: 75%;">
+<div style="text-align:center;">
+    <img src="images/logo.jpeg" class="logo">
 </div>
+
 
 <h1>GRAND PLATE Hotel</h1>
 
@@ -171,9 +237,7 @@ h1{font-size:28px;}
 <div class="menu-item"><span>Pani Puri</span><span class="price">₹80</span></div>
 <div class="menu-item"><span>Sev Puri</span><span class="price">₹100</span></div>
 <div class="menu-item"><span>Dahi Puri</span><span class="price">₹100</span></div>
-<div style="text-align:left; margin-bottom:10px;">
-    <img src="images/veg.jpeg" style="width:130px; border-radius: 100%;">
-</div>
+<img src="images/veg.jpeg" class="food-img">
 
 
 <h2 style="color:#d4af37;margin-top:20px;">Veg Main Course</h2>
@@ -185,7 +249,12 @@ h1{font-size:28px;}
 <div class="menu-item"><span>Paneer Hyderabadi</span><span class="price">₹230</span></div>
 <div class="menu-item"><span>Mushroom Masala</span><span class="price">₹200</span></div>
 <div class="menu-item"><span>Mushroom Afghani</span><span class="price">₹230</span></div>
-
+<div class="menu-item"><span>Plain Rice</span><span class="price">₹100</span></div>
+<div class="menu-item"><span>Jeera Rice</span><span class="price">₹150</span></div>
+<div class="menu-item"><span>Veg Fried Rice</span><span class="price">₹200</span></div>
+<div class="menu-item"><span>Veg Pulav</span><span class="price">₹150</span></div>
+<div class="menu-item"><span>Veg Paneer Rice</span><span class="price">₹230</span></div>
+<div class="menu-item"><span>Veg Gobi Rice</span><span class="price">₹230</span></div>
 </div>
 
 <!-- NON VEG SECTION -->
@@ -203,10 +272,7 @@ h1{font-size:28px;}
 <div class="menu-item"><span>Omelete</span><span class="price">₹70</span></div>
 <div class="menu-item"><span>Chicken Lolipop</span><span class="price">₹350</span></div>
 
-<div style="text-align:left; margin-bottom:10px;">
-    <img src="images/non-veg.jpg" style="width:130px; border-radius: 75%;">
-</div>
-
+<img src="images/non-veg.jpg" class="food-img">
 
 <h2 style="color:#d4af37;margin-top:20px;">Non-Veg Main Course</h2>
 
@@ -218,6 +284,14 @@ h1{font-size:28px;}
 <div class="menu-item"><span>Mutton Hariyalli</span><span class="price">₹500</span></div>
 <div class="menu-item"><span>Chicken Tandoori Full</span><span class="price">₹500</span></div>
 <div class="menu-item"><span>Chicken Tandoori Half</span><span class="price">₹300</span></div>
+<div class="menu-item"><span>Chicken Briyani Half</span><span class="price">₹150</span></div>
+<div class="menu-item"><span>Chicken Briyani Full</span><span class="price">₹300</span></div>
+<div class="menu-item"><span>Chicken Ghee Rice</span><span class="price">₹350</span></div>
+<div class="menu-item"><span>Mutton  Briyani Full</span><span class="price">₹500</span></div>
+<div class="menu-item"><span>Mutton Briyani Half</span><span class="price">₹300</span></div>
+<div class="menu-item"><span>Mutton Ghee Rice</span><span class="price">₹380</span></div>
+<div class="menu-item"><span>Curd Rice</span><span class="price">₹150</span></div>
+<div class="menu-item"><span>Kushka</span><span class="price">₹120</span></div>
 
 </div>
 
