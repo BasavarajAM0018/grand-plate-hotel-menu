@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Grand Plate Hotel Menu</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+font-family:'Poppins',sans-serif;
+background:#0f0f0f;
+color:white;
+overflow-x:hidden;
+}
+
+/* Moving Background */
+body::before{
+content:"";
+position:fixed;
+width:200%;
+height:200%;
+background:radial-gradient(circle,rgba(212,175,55,0.1) 1px,transparent 1px);
+background-size:50px 50px;
+animation:moveBg 30s linear infinite;
+z-index:-1;
+}
+
+@keyframes moveBg{
+0%{transform:translate(0,0);}
+100%{transform:translate(-200px,-200px);}
+}
+
+/* Container */
+.container{
+max-width:1100px;
+margin:40px auto;
+padding:30px;
+border:2px solid #d4af37;
+border-radius:15px;
+animation:goldGlow 2s infinite alternate;
+background:#000000;
+}
+
+@keyframes goldGlow{
+from{box-shadow:0 0 10px #d4af37;}
+to{box-shadow:0 0 25px #d4af37;}
+}
+
+h1{
+text-align:center;
+font-family:'Playfair Display',serif;
+color:#d4af37;
+margin-bottom:20px;
+font-size:40px;
+}
+
+/* Toggle Buttons */
+.toggle{
+text-align:center;
+margin-bottom:25px;
+}
+
+.toggle button{
+padding:10px 25px;
+margin:5px;
+border:none;
+cursor:pointer;
+background:#222;
+color:white;
+border:1px solid #d4af37;
+border-radius:25px;
+transition:0.3s;
+}
+
+.toggle button.active,
+.toggle button:hover{
+background:#d4af37;
+color:black;
+}
+
+/* Sections */
+.section{
+display:none;
+animation:fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn{
+from{opacity:0;transform:translateY(20px);}
+to{opacity:1;transform:translateY(0);}
+}
+
+.menu-item{
+display:flex;
+justify-content:space-between;
+margin:10px 0;
+padding:8px 0;
+border-bottom:1px solid #333;
+}
+
+.price{
+color:#d4af37;
+}
+
+/* Images */
+.food-img{
+width:100%;
+margin-top:15px;
+border-radius:10px;
+transition:0.3s;
+}
+
+.food-img:hover{
+transform:scale(1.05);
+}
+
+/* Responsive */
+@media(max-width:768px){
+h1{font-size:28px;}
+.container{margin:20px;}
+}
+
+@keyframes goldPulse{
+    0%{ box-shadow:0 0 10px #d4af37; }
+    50%{ box-shadow:0 0 35px #ffd700; }
+    100%{ box-shadow:0 0 10px #d4af37; }
+}
+
+.logo{
+    animation:goldPulse 2s infinite;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<div style="text-align:center; margin-bottom:10px; border-radius: 75%;">
+    <img src="images/logo.jpeg" style="width:130px; border-radius: 75%;">
+</div>
+
+<h1>GRAND PLATE Hotel</h1>
+
+<div class="toggle">
+<button id="vegBtn" class="active" onclick="showVeg()">Veg Menu</button>
+<button id="nonVegBtn" onclick="showNonVeg()">Non-Veg Menu</button>
+</div>
+
+<!-- VEG SECTION -->
+<div id="vegSection" class="section" style="display:block;">
+
+<h2 style="color:#d4af37;">Veg Starters</h2>
+
+<div class="menu-item"><span>Paneer Tikka</span><span class="price">₹420</span></div>
+<div class="menu-item"><span>Veg Spring Rolls</span><span class="price">₹350</span></div>
+<div class="menu-item"><span>Cream Mushroom Soup</span><span class="price">₹280</span></div>
+<div class="menu-item"><span>Mushroom Manchow Soup</span><span class="price">₹190</span></div>
+<div class="menu-item"><span>Mixed Veg Soup</span><span class="price">₹180</span></div>
+<div class="menu-item"><span>Creamy Tomato Soup</span><span class="price">₹140</span></div>
+<div class="menu-item"><span>Gobi Manchurian</span><span class="price">₹280</span></div>
+<div class="menu-item"><span>Pani Puri</span><span class="price">₹80</span></div>
+<div class="menu-item"><span>Sev Puri</span><span class="price">₹100</span></div>
+<div class="menu-item"><span>Dahi Puri</span><span class="price">₹100</span></div>
+<div style="text-align:left; margin-bottom:10px;">
+    <img src="images/veg.jpeg" style="width:130px; border-radius: 100%;">
+</div>
+
+
+<h2 style="color:#d4af37;margin-top:20px;">Veg Main Course</h2>
+
+<div class="menu-item"><span>Paneer Butter Masala</span><span class="price">₹300</span></div>
+<div class="menu-item"><span>Dal Makhani</span><span class="price">₹190</span></div>
+<div class="menu-item"><span>Dal Tadka</span><span class="price">₹220</span></div>
+<div class="menu-item"><span>Paneer Mutter Masala</span><span class="price">₹220</span></div>
+<div class="menu-item"><span>Paneer Hyderabadi</span><span class="price">₹230</span></div>
+<div class="menu-item"><span>Mushroom Masala</span><span class="price">₹200</span></div>
+<div class="menu-item"><span>Mushroom Afghani</span><span class="price">₹230</span></div>
+
+</div>
+
+<!-- NON VEG SECTION -->
+<div id="nonVegSection" class="section">
+
+<h2 style="color:#d4af37;">Non-Veg Starters</h2>
+
+<div class="menu-item"><span>Chicken Tikka</span><span class="price">₹250</span></div>
+<div class="menu-item"><span>Prawn Tempura</span><span class="price">₹300</span></div>
+<div class="menu-item"><span>Fish Fry</span><span class="price">₹280</span></div>
+<div class="menu-item"><span>Bangada Fish curry</span><span class="price">₹250</span></div>
+<div class="menu-item"><span>Chicken Kabab </span><span class="price">₹300</span></div>
+<div class="menu-item"><span>Fish Fry</span><span class="price">₹200</span></div>
+<div class="menu-item"><span>Egg Burji</span><span class="price">₹100</span></div>
+<div class="menu-item"><span>Omelete</span><span class="price">₹70</span></div>
+<div class="menu-item"><span>Chicken Lolipop</span><span class="price">₹350</span></div>
+
+<div style="text-align:left; margin-bottom:10px;">
+    <img src="images/non-veg.jpg" style="width:130px; border-radius: 75%;">
+</div>
+
+
+<h2 style="color:#d4af37;margin-top:20px;">Non-Veg Main Course</h2>
+
+<div class="menu-item"><span>Butter Chicken</span><span class="price">₹350</span></div>
+<div class="menu-item"><span>Mutton Rogan Josh</span><span class="price">₹580</span></div>
+<div class="menu-item"><span>Mutton Hyderabadi</span><span class="price">₹450</span></div>
+<div class="menu-item"><span>Chicken Hyderabadi</span><span class="price">₹300</span></div>
+<div class="menu-item"><span>Chicken Mulghai</span><span class="price">₹250</span></div>
+<div class="menu-item"><span>Mutton Hariyalli</span><span class="price">₹500</span></div>
+<div class="menu-item"><span>Chicken Tandoori Full</span><span class="price">₹500</span></div>
+<div class="menu-item"><span>Chicken Tandoori Half</span><span class="price">₹300</span></div>
+
+</div>
+
+</div>
+
+<script>
+
+function showVeg(){
+document.getElementById("vegSection").style.display="block";
+document.getElementById("nonVegSection").style.display="none";
+document.getElementById("vegBtn").classList.add("active");
+document.getElementById("nonVegBtn").classList.remove("active");
+}
+
+function showNonVeg(){
+document.getElementById("vegSection").style.display="none";
+document.getElementById("nonVegSection").style.display="block";
+document.getElementById("nonVegBtn").classList.add("active");
+document.getElementById("vegBtn").classList.remove("active");
+}
+
+</script>
+
+</body>
+</html>
