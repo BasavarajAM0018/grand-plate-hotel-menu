@@ -3,205 +3,273 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Grand Plate Hotel Menu</title>
+<title>Grand Plate 7-Star Luxury</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
 
 <style>
-
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-}
-
+*{margin:0;padding:0;box-sizing:border-box;}
 body{
 font-family:'Poppins',sans-serif;
-background:#0f0f0f;
+background:#0b0b0b;
 color:white;
 overflow-x:hidden;
 }
 
-/* Moving Background */
-body::before{
-content:"";
+/* ================= GOLD CURTAIN EFFECT ================= */
+.curtain{
 position:fixed;
-width:200%;
-height:200%;
-background:radial-gradient(circle,rgba(212,175,55,0.1) 1px,transparent 1px);
-background-size:50px 50px;
-animation:moveBg 30s linear infinite;
-z-index:-1;
+top:0;
+width:50%;
+height:100%;
+background:linear-gradient(to right,#d4af37,#b8860b);
+z-index:9999;
+animation:openCurtain 2s ease forwards;
+}
+.left{left:0;}
+.right{right:0;}
+
+@keyframes openCurtain{
+0%{width:50%;}
+100%{width:0;}
 }
 
-@keyframes moveBg{
-0%{transform:translate(0,0);}
-100%{transform:translate(-200px,-200px);}
+/* ================= LOGO INTRO ================= */
+.intro{
+position:fixed;
+width:100%;
+height:100%;
+display:flex;
+justify-content:center;
+align-items:center;
+background:#000;
+z-index:9998;
+animation:fadeIntro 2.5s forwards;
 }
 
-/* Container */
+.intro h1{
+font-family:'Playfair Display',serif;
+font-size:42px;
+color:#d4af37;
+animation:zoomLogo 2s ease;
+}
+
+@keyframes zoomLogo{
+0%{transform:scale(0.5);opacity:0;}
+100%{transform:scale(1);opacity:1;}
+}
+
+@keyframes fadeIntro{
+0%{opacity:1;}
+90%{opacity:1;}
+100%{opacity:0;visibility:hidden;}
+}
+
+/* ================= MAIN CONTAINER ================= */
 .container{
 max-width:1100px;
 margin:40px auto;
-padding:30px;
-border:2px solid #d4af37;
-border-radius:15px;
-animation:goldGlow 2s infinite alternate;
-background:#000000;
+padding:25px;
+border:1px solid #d4af37;
+border-radius:25px;
+background:linear-gradient(145deg,#000,#111);
+box-shadow:0 0 60px rgba(212,175,55,0.3);
+animation:fadeMenu 2.5s ease;
 }
 
-@keyframes goldGlow{
-from{box-shadow:0 0 10px #d4af37;}
-to{box-shadow:0 0 25px #d4af37;}
+@keyframes fadeMenu{
+0%{opacity:0;}
+100%{opacity:1;}
 }
 
-h1{
-text-align:center;
-font-family:'Playfair Display',serif;
+h2{
 color:#d4af37;
-margin-bottom:20px;
-font-size:40px;
+margin:20px 0 10px;
+font-family:'Playfair Display',serif;
 }
 
-/* Toggle Buttons */
+/* ================= TOGGLE ================= */
 .toggle{
 text-align:center;
 margin-bottom:25px;
 }
 
 .toggle button{
-padding:10px 25px;
+padding:8px 15px;
 margin:5px;
-border:none;
-cursor:pointer;
-background:#222;
-color:white;
+background:transparent;
+color:#d4af37;
 border:1px solid #d4af37;
 border-radius:25px;
+cursor:pointer;
+font-size:12px;
 transition:0.3s;
 }
 
-.toggle button.active,
-.toggle button:hover{
+.toggle button:hover,
+.toggle button.active{
 background:#d4af37;
 color:black;
+box-shadow:0 0 15px #d4af37;
 }
 
-/* Sections */
-.section{
-display:none;
-animation:fadeIn 0.5s ease;
-}
-
-@keyframes fadeIn{
-from{opacity:0;transform:translateY(20px);}
-to{opacity:1;transform:translateY(0);}
-}
+/* ================= SECTIONS ================= */
+.section{display:none;}
+.section.active{display:block;}
 
 .menu-item{
 display:flex;
+align-items:center;
+gap:15px;
+padding:12px 0;
+border-bottom:1px solid #222;
+}
+
+.menu-item img{
+width:60px;
+height:60px;
+border-radius:50%;
+border:2px solid #d4af37;
+object-fit:cover;
+}
+
+.menu-details{flex:1;}
+
+.menu-top{
+display:flex;
 justify-content:space-between;
-margin:10px 0;
-padding:8px 0;
-border-bottom:1px solid #333;
+font-size:14px;
 }
 
-.logo{
-    width:130px;
-    height:130px;
-    object-fit:cover;
-    border-radius:50%;
-    border:3px solid #d4af37;
-
-    /* Golden Glow */
-    box-shadow:
-        0 0 10px #d4af37,
-        0 0 20px #d4af37,
-        0 0 40px #d4af37;
-
-    transition:0.4s ease;
+.description{
+font-size:11px;
+color:#aaa;
+font-style:italic;
+margin-top:4px;
 }
 
-/* Glow Animation */
-.logo:hover{
-    transform:scale(1.1);
-    box-shadow:
-        0 0 20px #ffd700,
-        0 0 40px #ffd700,
-        0 0 60px #ffd700;
-}
+.price{color:#d4af37;}
 
-
-.price{
-color:#d4af37;
-}
-
-/* Images */
-.food-img{
-width:100%;
-margin-top:15px;
-border-radius:10px;
-transition:0.3s;
-}
-
-.food-img:hover{
-transform:scale(1.05);
-}
-
-/* Responsive */
+/* ================= RESPONSIVE ================= */
 @media(max-width:768px){
-h1{font-size:28px;}
-.container{margin:20px;}
+.container{margin:20px;padding:18px;}
+.menu-item img{width:50px;height:50px;}
+.menu-top{font-size:13px;}
+.toggle button{font-size:10px;padding:6px 8px;}
 }
 
-.food-img{
-    width:120px;          /* make equal width & height */
-    height:120px;
-    object-fit:cover;     /* prevents image distortion */
-    border-radius:50%;    /* makes it round */
-    display:block;
-
-    border:3px solid #d4af37;
-    margin:20px 0 20px 10px;
-
-    /* Golden Glow */
-    box-shadow:
-        0 0 10px #d4af37,
-        0 0 25px #d4af37;
-
-    transition:0.4s ease;
+/* Intro Layout */
+.intro{
+position:fixed;
+width:100%;
+height:150%;
+display:flex;
+justify-content:center;
+align-items:center;
+background:#000;
+z-index:9998;
+animation:fadeIntro 3s forwards;
 }
 
-.logo{
-    width:220px;          /* equal width & height */
-    height:220px;
-    object-fit:cover;     /* prevent stretching */
-    border-radius:50%;    /* make circle */
-    display:block;
-    margin:20px auto;     /* center align */
-
-    border:3px solid #d4af37;
-
-    /* Golden Glow */
-    box-shadow:
-        0 0 10px #d4af37,
-        0 0 25px #d4af37;
-
-    transition:0.4s ease;
+.intro-content{
+text-align:center;
+animation:zoomLogo 2.3s ease;
 }
 
-.logo:hover{
-    transform:scale(1.1);
-    box-shadow:
-        0 0 20px #ffd700,
-        0 0 40px #ffd700;
+/* Rounded Logo with Golden Glow */
+.intro-logo{
+width:150px;
+height:150px;
+border-radius:50%;
+object-fit:cover;
+border:4px solid #d4af37;
+box-shadow:
+    0 0 20px #d4af37,
+    0 0 40px rgba(212,175,55,0.7),
+    0 0 60px rgba(212,175,55,0.5);
+margin-bottom:18px;
+transition:0.4s ease;
 }
 
-.food-img:hover{
-    transform:scale(1.1);
-    box-shadow:
-        0 0 20px #ffd700,
-        0 0 40px #ffd700;
+/* Hover Glow Effect */
+.intro-logo:hover{
+transform:scale(1.05);
+box-shadow:
+    0 0 30px #ffd700,
+    0 0 60px rgba(255,215,0,0.8),
+    0 0 90px rgba(255,215,0,0.6);
+}
+
+/* Brand Title */
+.brand-title{
+font-family:'Playfair Display',serif;
+font-size:42px;
+color:#d4af37;
+margin-bottom:12px;
+}
+
+/* Quotes */
+.intro-quotes{
+font-size:16px;
+color:#f5e6b0;
+font-style:italic;
+line-height:1.6;
+}
+
+/* Animations */
+@keyframes zoomLogo{
+0%{transform:scale(0.6);opacity:0;}
+100%{transform:scale(1);opacity:1;}
+}
+
+@keyframes fadeIntro{
+0%{opacity:1;}
+85%{opacity:1;}
+100%{opacity:0;visibility:hidden;}
+}
+
+/* ===== BRAND HEADER ===== */
+.brand-header{
+text-align:center;
+margin-bottom:30px;
+}
+
+/* Rounded Logo with Golden Glow */
+.brand-logo{
+width:150px;
+height:150px;
+border-radius:50%;
+object-fit:cover;
+border:4px solid #d4af37;
+box-shadow:
+    0 0 20px #d4af37,
+    0 0 40px rgba(212,175,55,0.7),
+    0 0 60px rgba(212,175,55,0.5);
+margin-bottom:15px;
+transition:0.4s ease;
+}
+
+/* Glow on hover */
+.brand-logo:hover{
+transform:scale(1.05);
+box-shadow:
+    0 0 30px #ffd700,
+    0 0 60px rgba(255,215,0,0.9),
+    0 0 100px rgba(255,215,0,0.7);
+}
+
+.brand-name{
+font-family:'Playfair Display',serif;
+font-size:42px;
+color:#d4af37;
+margin-bottom:10px;
+}
+
+.brand-quotes{
+font-size:16px;
+color:#f5e6b0;
+font-style:italic;
+line-height:1.6;
 }
 
 </style>
@@ -209,110 +277,1105 @@ h1{font-size:28px;}
 
 <body>
 
-<div class="container">
-<div style="text-align:center;">
-    <img src="images/logo.jpeg" class="logo">
+<!-- Curtain -->
+<div class="curtain left"></div>
+<div class="curtain right"></div>
+
+<!-- Intro Logo -->
+<div class="intro">
+  <div class="intro-content">
+
+    <!-- LOGO IMAGE -->
+    <img src="images/logo.jpeg" class="intro-logo" alt="Grand Plate Logo">
+
+    <!-- TITLE -->
+    <h1 class="brand-title">👑 GRAND PLATE 👑</h1>
+
+    <!-- FUNNY HEALTH QUOTES -->
+    <div class="intro-quotes">
+      “Chew well now… or chew medicines later!” 😂<br>
+      “If you don’t eat right, the hospital might invite!” 🤭
+    </div>
+
+  </div>
 </div>
+<div class="container">
 
+<!-- ===== BRAND HEADER ===== -->
+<div class="brand-header">
 
-<h1>GRAND PLATE Hotel</h1>
+    <img src="images/logo.jpeg" alt="Grand Plate Logo" class="brand-logo">
+
+    <h1 class="brand-name">👑 GRAND PLATE 👑</h1>
+
+    <div class="brand-quotes">
+        “Chew well now… or chew medicines later!” 😂 <br>
+        “If you don’t eat right, the hospital might invite!” 🤭
+    </div>
+
+</div>
 
 <div class="toggle">
-<button id="vegBtn" class="active" onclick="showVeg()">Veg Menu</button>
-<button id="nonVegBtn" onclick="showNonVeg()">Non-Veg Menu</button>
+<button data-section="veg" class="active">🥗 Veg</button>
+<button data-section="nonveg">🍗 Non-Veg</button>
+<button data-section="rice">🍚 Rice</button>
+<button data-section="roti">🫓 Roti</button>
+<button data-section="salads">🥙 Salads</button>
+<button data-section="beverages">🥤 Beverages</button>
 </div>
 
-<!-- VEG SECTION -->
-<div id="vegSection" class="section" style="display:block;">
+<!-- ================= VEG ================= -->
+<div id="veg" class="section active">
+<h2>Veg Starters 😋</h2>
 
-<h2 style="color:#d4af37;">Veg Starters</h2>
+<!-- 🍄 5 Mushroom Starters -->
 
-<div class="menu-item"><span>Paneer Tikka</span><span class="price">₹420</span></div>
-<div class="menu-item"><span>Veg Spring Rolls</span><span class="price">₹350</span></div>
-<div class="menu-item"><span>Cream Mushroom Soup</span><span class="price">₹280</span></div>
-<div class="menu-item"><span>Mushroom Manchow Soup</span><span class="price">₹190</span></div>
-<div class="menu-item"><span>Mixed Veg Soup</span><span class="price">₹180</span></div>
-<div class="menu-item"><span>Creamy Tomato Soup</span><span class="price">₹140</span></div>
-<div class="menu-item"><span>Gobi Manchurian</span><span class="price">₹280</span></div>
-<div class="menu-item"><span>Pani Puri</span><span class="price">₹80</span></div>
-<div class="menu-item"><span>Sev Puri</span><span class="price">₹100</span></div>
-<div class="menu-item"><span>Dahi Puri</span><span class="price">₹100</span></div>
-<img src="images/veg.jpeg" class="food-img">
-
-
-<h2 style="color:#d4af37;margin-top:20px;">Veg Main Course</h2>
-
-<div class="menu-item"><span>Paneer Butter Masala</span><span class="price">₹300</span></div>
-<div class="menu-item"><span>Dal Makhani</span><span class="price">₹190</span></div>
-<div class="menu-item"><span>Dal Tadka</span><span class="price">₹220</span></div>
-<div class="menu-item"><span>Paneer Mutter Masala</span><span class="price">₹220</span></div>
-<div class="menu-item"><span>Paneer Hyderabadi</span><span class="price">₹230</span></div>
-<div class="menu-item"><span>Mushroom Masala</span><span class="price">₹200</span></div>
-<div class="menu-item"><span>Mushroom Afghani</span><span class="price">₹230</span></div>
-<div class="menu-item"><span>Plain Rice</span><span class="price">₹100</span></div>
-<div class="menu-item"><span>Jeera Rice</span><span class="price">₹150</span></div>
-<div class="menu-item"><span>Veg Fried Rice</span><span class="price">₹200</span></div>
-<div class="menu-item"><span>Veg Pulav</span><span class="price">₹150</span></div>
-<div class="menu-item"><span>Veg Paneer Rice</span><span class="price">₹230</span></div>
-<div class="menu-item"><span>Veg Gobi Rice</span><span class="price">₹230</span></div>
+<div class="menu-item">
+<img src="images/Mushroom Tikka.jpeg">
+<div class="menu-details">
+<div class="menu-top"><span>Mushroom Tikka 🍄🔥</span><span class="price">₹280</span></div>
+<div class="description">Mushrooms that hit the gym before grilling 💪</div>
+</div>
 </div>
 
-<!-- NON VEG SECTION -->
-<div id="nonVegSection" class="section">
+<div class="menu-item">
+<img src="images/Crispy Mushroom.jpeg">
+<div class="menu-details">
+<div class="menu-top"><span>Crispy Mushroom 🍟</span><span class="price">₹240</span></div>
+<div class="description">Crunch louder than your midnight hunger 😆</div>
+</div>
+</div>
 
-<h2 style="color:#d4af37;">Non-Veg Starters</h2>
+<div class="menu-item">
+<img src="images/Stuffed Mushroom.jpeg">
+<div class="menu-details">
+<div class="menu-top"><span>Stuffed Mushroom 🧀</span><span class="price">₹320</span></div>
+<div class="description">Stuffed more than your exam schedule 📚😂</div>
+</div>
+</div>
 
-<div class="menu-item"><span>Chicken Tikka</span><span class="price">₹250</span></div>
-<div class="menu-item"><span>Prawn Tempura</span><span class="price">₹300</span></div>
-<div class="menu-item"><span>Fish Fry</span><span class="price">₹280</span></div>
-<div class="menu-item"><span>Bangada Fish curry</span><span class="price">₹250</span></div>
-<div class="menu-item"><span>Chicken Kabab </span><span class="price">₹300</span></div>
-<div class="menu-item"><span>Fish Fry</span><span class="price">₹200</span></div>
-<div class="menu-item"><span>Egg Burji</span><span class="price">₹100</span></div>
-<div class="menu-item"><span>Omelete</span><span class="price">₹70</span></div>
-<div class="menu-item"><span>Chicken Lolipop</span><span class="price">₹350</span></div>
+<div class="menu-item">
+<img src="images/Mushroom Manchurian.jpeg">
+<div class="menu-details">
+<div class="menu-top"><span>Mushroom Manchurian 🌶️</span><span class="price">₹260</span></div>
+<div class="description">Chinese passport, Indian spice attitude 🇨🇳🔥</div>
+</div>
+</div>
 
-<img src="images/non-veg.jpg" class="food-img">
+<div class="menu-item">
+<img src="images/Mushroom Soup.jpeg">
+<div class="menu-details">
+<div class="menu-top"><span>Creamy Mushroom Soup 🍲</span><span class="price">₹190</span></div>
+<div class="description">Warm hug from mushroom family 🤗</div>
+</div>
+</div>
 
-<h2 style="color:#d4af37;margin-top:20px;">Non-Veg Main Course</h2>
+<!-- 🧀 5 Paneer Starters -->
 
-<div class="menu-item"><span>Butter Chicken</span><span class="price">₹350</span></div>
-<div class="menu-item"><span>Mutton Rogan Josh</span><span class="price">₹580</span></div>
-<div class="menu-item"><span>Mutton Hyderabadi</span><span class="price">₹450</span></div>
-<div class="menu-item"><span>Chicken Hyderabadi</span><span class="price">₹300</span></div>
-<div class="menu-item"><span>Chicken Mulghai</span><span class="price">₹250</span></div>
-<div class="menu-item"><span>Mutton Hariyalli</span><span class="price">₹500</span></div>
-<div class="menu-item"><span>Chicken Tandoori Full</span><span class="price">₹500</span></div>
-<div class="menu-item"><span>Chicken Tandoori Half</span><span class="price">₹300</span></div>
-<div class="menu-item"><span>Chicken Briyani Half</span><span class="price">₹150</span></div>
-<div class="menu-item"><span>Chicken Briyani Full</span><span class="price">₹300</span></div>
-<div class="menu-item"><span>Chicken Ghee Rice</span><span class="price">₹350</span></div>
-<div class="menu-item"><span>Mutton  Briyani Full</span><span class="price">₹500</span></div>
-<div class="menu-item"><span>Mutton Briyani Half</span><span class="price">₹300</span></div>
-<div class="menu-item"><span>Mutton Ghee Rice</span><span class="price">₹380</span></div>
-<div class="menu-item"><span>Curd Rice</span><span class="price">₹150</span></div>
-<div class="menu-item"><span>Kushka</span><span class="price">₹120</span></div>
+<div class="menu-item">
+<img src="images/Paneer Tikka.jpeg">
+<div class="menu-details">
+<div class="menu-top"><span>Paneer Tikka 🔥</span><span class="price">₹320</span></div>
+<div class="description">Paneer that works out harder than you 💪😎</div>
+</div>
+</div>
 
+<div class="menu-item">
+<img src="images/Chilli Paneer.jpeg">
+<div class="menu-details">
+<div class="menu-top"><span>Chilli Paneer 🌶️</span><span class="price">₹300</span></div>
+<div class="description">Spicy enough to wake your ancestors 😆</div>
+</div>
+</div>
+
+<div class="menu-item">
+<img src="images/Paneer 65.jpeg">
+<div class="menu-details">
+<div class="menu-top"><span>Paneer 65 🍢</span><span class="price">₹310</span></div>
+<div class="description">65 reasons to order this immediately 😍</div>
+</div>
+</div>
+
+<div class="menu-item">
+<img src="images/Paneer Roll.jpeg">
+<div class="menu-details">
+<div class="menu-top"><span>Paneer Roll 🌯</span><span class="price">₹250</span></div>
+<div class="description">Wrapped tighter than your secrets 🤫</div>
+</div>
+</div>
+
+<div class="menu-item">
+<img src="images/Paneer Cutlet.jpeg       ">
+<div class="menu-details">
+<div class="menu-top"><span>Paneer Cutlet 🥔</span><span class="price">₹230</span></div>
+<div class="description">Crispy outside, soft-hearted inside ❤️</div>
+</div>
+</div>
+
+
+<h2>Veg Main Course 🍛</h2>
+
+<div class="menu-item">
+<img src="images/Paneer Butter Masala.jpeg">
+<div class="menu-details">
+<div class="menu-top"><span>Paneer Butter Masala 🧈</span><span class="price">₹350</span></div>
+<div class="description">So creamy it deserves its own fan club 😍</div>
+</div>
+</div>
+
+<div class="menu-item">
+<img src="images/Shahi Paneer.jpeg">
+<div class="menu-details">
+<div class="menu-top"><span>Shahi Paneer 👑</span><span class="price">₹380</span></div>
+<div class="description">Royal enough to sit on the throne 😂</div>
+</div>
+</div>
+
+<div class="menu-item">
+<img src="images/Kadai Paneer.jpeg">
+<div class="menu-details">
+<div class="menu-top"><span>Kadai Paneer 🌶️</span><span class="price">₹340</span></div>
+<div class="description">Spicy enough to wake your inner dragon 🐉</div>
+</div>
+</div>
+
+<div class="menu-item">
+<img src="images/Palak Paneer.jpeg">
+<div class="menu-details">
+<div class="menu-top"><span>Palak Paneer 🌿</span><span class="price">₹320</span></div>
+<div class="description">Spinach that finally became successful 😎</div>
+</div>
+</div>
+
+<div class="menu-item">
+<img src="images/Matar Paneer.jpeg">
+<div class="menu-details">
+<div class="menu-top"><span>Matar Paneer 🟢</span><span class="price">₹300</span></div>
+<div class="description">Peas living their best life 💃</div>
+</div>
+</div>
+
+<div class="menu-item">
+<img src="images/Dal Makhani.jpeg">
+<div class="menu-details">
+<div class="menu-top"><span>Dal Makhani 🍲</span><span class="price">₹250</span></div>
+<div class="description">Black dal with gold personality 👑</div>
+</div>
+</div>
+
+<div class="menu-item">
+<img src="images/Dal Tadka.jpeg">
+<div class="menu-details">
+<div class="menu-top"><span>Dal Tadka 🔥</span><span class="price">₹220</span></div>
+<div class="description">Simple but dramatic tempering 😆</div>
+</div>
+</div>
+
+<div class="menu-item">
+<img src="images/Veg Kolhapuri.jpeg">
+<div class="menu-details">
+<div class="menu-top"><span>Veg Kolhapuri 🌶️🔥</span><span class="price">₹330</span></div>
+<div class="description">Warning: Spice level may cause happiness overload 😂</div>
+</div>
+</div>
+
+<div class="menu-item">
+<img src="images/Malai Kofta.jpeg">
+<div class="menu-details">
+<div class="menu-top"><span>Malai Kofta 🧀</span><span class="price">₹360</span></div>
+<div class="description">Soft balls of luxury 😌</div>
+</div>
+</div>
+
+<div class="menu-item">
+<img src="images/Mushroom Masala.jpeg">
+<div class="menu-details">
+<div class="menu-top"><span>Mushroom Masala 🍄</span><span class="price">₹310</span></div>
+<div class="description">Mushrooms with MBA in taste 🎓</div>
+</div>
+</div>
+
+<div class="menu-item">
+<img src="images/Aloo Gobi.jpeg">
+<div class="menu-details">
+<div class="menu-top"><span>Aloo Gobi 🥔</span><span class="price">₹240</span></div>
+<div class="description">Potato & cauliflower power couple 💑</div>
+</div>
+</div>
+
+<div class="menu-item">
+<img src="images/Chole Masala.jpeg">
+<div class="menu-details">
+<div class="menu-top"><span>Chole Masala 🫘</span><span class="price">₹260</span></div>
+<div class="description">Chickpeas that came to party 🎉</div>
+</div>
+</div>
+
+<div class="menu-item">
+<img src="images/Veg Biryani.jpeg">
+<div class="menu-details">
+<div class="menu-top"><span>Veg Biryani 🍚</span><span class="price">₹300</span></div>
+<div class="description">Rice dressed better than you 😎</div>
+</div>
+</div>
+
+<div class="menu-item">
+<img src="images/Veg Handi.jpeg">
+<div class="menu-details">
+<div class="menu-top"><span>Veg Handi 🍲</span><span class="price">₹340</span></div>
+<div class="description">Cooked slowly like your exam preparation 😆</div>
+</div>
+</div>
+
+<div class="menu-item">
+<img src="images/Paneer Lababdar.jpeg">
+<div class="menu-details">
+<div class="menu-top"><span>Paneer Lababdar 🧈</span><span class="price">₹370</span></div>
+<div class="description">Extra rich, extra dramatic, extra delicious 😍</div>
+</div>
+</div>
+</div>   <!-- CLOSE VEG SECTION -->
+
+
+<!-- ================= NON VEG ================= -->
+<div id="nonveg" class="section">
+
+<h2>Non-Veg Starters 🍗🔥</h2>
+
+<!-- 🥚 3 Egg Starters -->
+
+<div class="menu-item">
+<img src="images/Masala Omelette.jpeg">
+<div class="menu-details">
+<div class="menu-top"><span>Masala Omelette 🍳</span><span class="price">₹120</span></div>
+<div class="description">Egg that woke up spicy 😆</div>
+</div>
+</div>
+
+<div class="menu-item">
+<img src="images/Egg 65.jpeg">
+<div class="menu-details">
+<div class="menu-top"><span>Egg 65 🔥</span><span class="price">₹180</span></div>
+<div class="description">65 reasons to order immediately 😂</div>
+</div>
+</div>
+
+<div class="menu-item">
+<img src="images/Egg Manchurian.jpeg">
+<div class="menu-details">
+<div class="menu-top"><span>Egg Manchurian 🌶️</span><span class="price">₹200</span></div>
+<div class="description">Egg went to China and came back spicy 🇨🇳🔥</div>
+</div>
+</div>
+
+<!-- 🍗 7 Chicken Starters -->
+
+<div class="menu-item">
+<img src="images/Chicken Tikka.jpeg">
+<div class="menu-details">
+<div class="menu-top"><span>Chicken Tikka 🔥</span><span class="price">₹380</span></div>
+<div class="description">Smoky enough to impress your crush 😎</div>
+</div>
+</div>
+
+<div class="menu-item">
+<img src="images/Chicken Lollipop.jpeg">
+<div class="menu-details">
+<div class="menu-top"><span>Chicken Lollipop 🍗</span><span class="price">₹400</span></div>
+<div class="description">Not candy, but equally addictive 😜</div>
+</div>
+</div>
+
+<div class="menu-item">
+<img src="images/Chicken 65.jpeg">
+<div class="menu-details">
+<div class="menu-top"><span>Chicken 65 🔥</span><span class="price">₹420</span></div>
+<div class="description">Spicy enough to start a fire alarm 🚨😂</div>
+</div>
+</div>
+
+<div class="menu-item">
+<img src="images/Chicken Wings.jpeg">
+<div class="menu-details">
+<div class="menu-top"><span>Chicken Wings 🍗</span><span class="price">₹390</span></div>
+<div class="description">Wings but no flying license 🛫😆</div>
+</div>
+</div>
+
+<div class="menu-item">
+<img src="images/Chicken Kebab.jpeg">
+<div class="menu-details">
+<div class="menu-top"><span>Chicken Kebab 🍢</span><span class="price">₹350</span></div>
+<div class="description">Skewered with style 😎</div>
+</div>
+</div>
+
+<div class="menu-item">
+<img src="images/Chicken Manchurian.jpeg">
+<div class="menu-details">
+<div class="menu-top"><span>Chicken Manchurian 🌶️</span><span class="price">₹370</span></div>
+<div class="description">International chicken passport holder 🌍</div>
+</div>
+</div>
+
+<div class="menu-item">
+<img src="images/Crispy Chicken.jpeg">
+<div class="menu-details">
+<div class="menu-top"><span>Crispy Chicken 🍟</span><span class="price">₹360</span></div>
+<div class="description">Crunch louder than exam results day 😆</div>
+</div>
+</div>
+
+<!-- 🐐 5 Mutton Starters -->
+
+<div class="menu-item">
+<img src="images/Mutton Seekh Kebab.jpeg">
+<div class="menu-details">
+<div class="menu-top"><span>Mutton Seekh Kebab 🐐</span><span class="price">₹450</span></div>
+<div class="description">Kebab with serious attitude 😎</div>
+</div>
+</div>
+
+<div class="menu-item">
+<img src="images/Mutton Chops.jpeg">
+<div class="menu-details">
+<div class="menu-top"><span>Mutton Chops 🍖</span><span class="price">₹480</span></div>
+<div class="description">Chops that demand respect 👑</div>
+</div>
+</div>
+
+<div class="menu-item">
+<img src="images/Mutton 65.jpeg">
+<div class="menu-details">
+<div class="menu-top"><span>Mutton 65 🔥</span><span class="price">₹470</span></div>
+<div class="description">For brave hearts only 💪</div>
+</div>
+</div>
+
+<div class="menu-item">
+<img src="images/Mutton Fry.jpeg">
+<div class="menu-details">
+<div class="menu-top"><span>Mutton Fry 🍳</span><span class="price">₹460</span></div>
+<div class="description">Fried like your weekend plans 😂</div>
+</div>
+</div>
+
+<div class="menu-item">
+<img src="images/Pepper Mutton.jpeg">
+<div class="menu-details">
+<div class="menu-top"><span>Pepper Mutton 🌶️</span><span class="price">₹490</span></div>
+<div class="description">Pepper so strong it speaks loudly 🔥</div>
+</div>
+</div>
+
+<!-- ================= MAIN COURSE ================= -->
+
+<h2>Non-Veg Main Course 🍖🔥</h2>
+
+<div class="menu-item">
+<img src="images/Butter Chicken.jpeg">
+<div class="menu-details">
+<div class="menu-top"><span>Butter Chicken 🍗</span><span class="price">₹420</span></div>
+<div class="description">So rich it probably owns property 😂</div>
+</div>
+</div>
+
+<div class="menu-item">
+<img src="images/Chicken Biryani.jpeg">
+<div class="menu-details">
+<div class="menu-top"><span>Chicken Biryani 🍚</span><span class="price">₹380</span></div>
+<div class="description">One plate = instant happiness 🚀</div>
+</div>
+</div>
+
+<div class="menu-item">
+<img src="images/Mutton Biryani.jpeg">
+<div class="menu-details">
+<div class="menu-top"><span>Mutton Biryani 🐐</span><span class="price">₹480</span></div>
+<div class="description">Royal rice with goat attitude 👑</div>
+</div>
+</div>
+
+<div class="menu-item">
+<img src="images/Chicken Curry.jpeg">
+<div class="menu-details">
+<div class="menu-top"><span>Chicken Curry 🍛</span><span class="price">₹350</span></div>
+<div class="description">Classic hero of every family dinner 😎</div>
+</div>
+</div>
+
+<div class="menu-item">
+<img src="images/Mutton Rogan Josh.jpeg">
+<div class="menu-details">
+<div class="menu-top"><span>Mutton Rogan Josh 🐐</span><span class="price">₹490</span></div>
+<div class="description">Luxury served in gravy form 😍</div>
+</div>
+</div>
+
+<div class="menu-item">
+<img src="images/Kadai Chicken.jpeg">
+<div class="menu-details">
+<div class="menu-top"><span>Kadai Chicken 🌶️</span><span class="price">₹360</span></div>
+<div class="description">Spice level: confident 😎</div>
+</div>
+</div>
+
+<div class="menu-item">
+<img src="images/Chicken Handi.jpeg">
+<div class="menu-details">
+<div class="menu-top"><span>Chicken Handi 🍲</span><span class="price">₹390</span></div>
+<div class="description">Cooked slowly like your assignments 😂</div>
+</div>
+</div>
+
+<div class="menu-item">
+<img src="images/Mutton Curry.jpeg">
+<div class="menu-details">
+<div class="menu-top"><span>Mutton Curry 🐐</span><span class="price">₹470</span></div>
+<div class="description">Curry with main character energy 🎬</div>
+</div>
+</div>
+
+<div class="menu-item">
+<img src="images/Tandoori Chicken.jpeg">
+<div class="menu-details">
+<div class="menu-top"><span>Tandoori Chicken 🔥</span><span class="price">₹450</span></div>
+<div class="description">Straight from fire to your heart ❤️</div>
+</div>
+</div>
+
+<div class="menu-item">
+<img src="images/Mutton Keema.jpeg">
+<div class="menu-details">
+<div class="menu-top"><span>Mutton Keema 🍳</span><span class="price">₹440</span></div>
+<div class="description">Minced but maximum flavour 😎</div>
+</div>
+</div>
+
+<div class="menu-item">
+<img src="images/Chicken Masala.jpeg">
+<div class="menu-details">
+<div class="menu-top"><span>Chicken Masala 🌶️</span><span class="price">₹360</span></div>
+<div class="description">Masala that understands emotions 😆</div>
+</div>
+</div>
+
+<div class="menu-item">
+<img src="images/Pepper Mutton Curry.jpeg">
+<div class="menu-details">
+<div class="menu-top"><span>Pepper Mutton Curry 🌶️</span><span class="price">₹480</span></div>
+<div class="description">For people who fear nothing 🔥</div>
+</div>
+</div>
+
+<div class="menu-item">
+<img src="images/Chicken Fry.jpeg">
+<div class="menu-details">
+<div class="menu-top"><span>Chicken Fry 🍗</span><span class="price">₹340</span></div>
+<div class="description">Simple, crispy, legendary 😎</div>
+</div>
+</div>
+
+<div class="menu-item">
+<img src="images/Mutton Handi.jpeg">
+<div class="menu-details">
+<div class="menu-top"><span>Mutton Handi 🐐</span><span class="price">₹490</span></div>
+<div class="description">Slow cooked drama 🍲</div>
+</div>
+</div>
+
+<div class="menu-item">
+<img src="images/Chicken Korma.jpeg">
+<div class="menu-details">
+<div class="menu-top"><span>Chicken Korma 🍗</span><span class="price">₹410</span></div>
+<div class="description">Creamy enough to cause jealousy 😆</div>
+</div>
 </div>
 
 </div>
+
+
+<!-- ================= RICE ================= -->
+<div id="rice" class="section">
+
+<h2>Veg Rice 🍚👑</h2>
+
+<div class="menu-item">
+<img src="images/Veg Fried Rice.jpeg">
+<div class="menu-details">
+<div class="menu-top"><span>Veg Fried Rice 🍚</span><span class="price">₹220</span></div>
+<div class="description">Rice but dressed for a wedding 💃</div>
+</div>
+</div>
+
+<div class="menu-item">
+<img src="images/Veg Biryani.jpeg">
+<div class="menu-details">
+<div class="menu-top"><span>Veg Biryani 🌿</span><span class="price">₹300</span></div>
+<div class="description">Vegetables living their royal life 👑</div>
+</div>
+</div>
+
+<div class="menu-item">
+<img src="images/Jeera Rice.jpeg">
+<div class="menu-details">
+<div class="menu-top"><span>Jeera Rice 🌾</span><span class="price">₹180</span></div>
+<div class="description">Simple but confident 😎</div>
+</div>
+</div>
+
+<div class="menu-item">
+<img src="images/Paneer Pulao.jpeg">
+<div class="menu-details">
+<div class="menu-top"><span>Paneer Pulao 🧀</span><span class="price">₹280</span></div>
+<div class="description">Paneer joined the rice party 🎉</div>
+</div>
+</div>
+
+<div class="menu-item">
+<img src="images/Mushroom Rice.jpeg">
+<div class="menu-details">
+<div class="menu-top"><span>Mushroom Rice 🍄</span><span class="price">₹260</span></div>
+<div class="description">MBA mushrooms managing rice 😆</div>
+</div>
+</div>
+
+<div class="menu-item">
+<img src="images/Veg Pulao.jpeg">
+<div class="menu-details">
+<div class="menu-top"><span>Veg Pulao 🥕</span><span class="price">₹240</span></div>
+<div class="description">Colorful like your Instagram feed 📸</div>
+</div>
+</div>
+
+<div class="menu-item">
+<img src="images/Lemon Rice.jpeg">
+<div class="menu-details">
+<div class="menu-top"><span>Lemon Rice 🍋</span><span class="price">₹160</span></div>
+<div class="description">Tangy enough to wake you up 😆</div>
+</div>
+</div>
+
+<div class="menu-item">
+<img src="images/Curd Rice.jpeg">
+<div class="menu-details">
+<div class="menu-top"><span>Curd Rice 🥣</span><span class="price">₹150</span></div>
+<div class="description">Peaceful like Sunday afternoon 😌</div>
+</div>
+</div>
+
+<div class="menu-item">
+<img src="images/Schezwan Rice.jpeg">
+<div class="menu-details">
+<div class="menu-top"><span>Schezwan Rice 🔥</span><span class="price">₹270</span></div>
+<div class="description">Spicy enough to text your ex 😂</div>
+</div>
+</div>
+
+<div class="menu-item">
+<img src="images/Tomato Rice.jpeg">
+<div class="menu-details">
+<div class="menu-top"><span>Tomato Rice 🍅</span><span class="price">₹170</span></div>
+<div class="description">Red but not angry 😎</div>
+</div>
+</div>
+
+<h2>Non-Veg Rice 🍗🔥</h2>
+
+<div class="menu-item">
+<img src="images/Chicken Biryani.jpeg">
+<div class="menu-details">
+<div class="menu-top"><span>Chicken Biryani 🍗</span><span class="price">₹380</span></div>
+<div class="description">One plate = instant happiness 🚀</div>
+</div>
+</div>
+
+<div class="menu-item">
+<img src="images/Mutton Biryani.jpeg">
+<div class="menu-details">
+<div class="menu-top"><span>Mutton Biryani 🐐</span><span class="price">₹480</span></div>
+<div class="description">Royal rice with goat attitude 👑</div>
+</div>
+</div>
+
+<div class="menu-item">
+<img src="images/Egg Fried Rice.jpeg">
+<div class="menu-details">
+<div class="menu-top"><span>Egg Fried Rice 🍳</span><span class="price">₹240</span></div>
+<div class="description">Egg jumped into rice unexpectedly 😂</div>
+</div>
+</div>
+
+<div class="menu-item">
+<img src="images/Chicken Fried Rice.jpeg">
+<div class="menu-details">
+<div class="menu-top"><span>Chicken Fried Rice 🍗</span><span class="price">₹320</span></div>
+<div class="description">Rice with protein upgrade 💪</div>
+</div>
+</div>
+
+<div class="menu-item">
+<img src="images/Prawn Fried Rice.jpeg">
+<div class="menu-details">
+<div class="menu-top"><span>Prawn Fried Rice 🍤</span><span class="price">₹420</span></div>
+<div class="description">Seafood that swam into luxury 🌊</div>
+</div>
+</div>
+
+<div class="menu-item">
+<img src="images/Mutton Pulao.jpeg">
+<div class="menu-details">
+<div class="menu-top"><span>Mutton Pulao 🐐</span><span class="price">₹450</span></div>
+<div class="description">Rice with main character energy 🎬</div>
+</div>
+</div>
+
+<div class="menu-item">
+<img src="images/Fish Biryani.jpeg">
+<div class="menu-details">
+<div class="menu-top"><span>Fish Biryani 🐟</span><span class="price">₹390</span></div>
+<div class="description">Ocean vibes in every bite 🌊</div>
+</div>
+</div>
+
+<div class="menu-item">
+<img src="images/Chicken Schezwan Rice.jpeg">
+<div class="menu-details">
+<div class="menu-top"><span>Chicken Schezwan Rice 🔥</span><span class="price">₹350</span></div>
+<div class="description">Spicy enough to test friendships 😂</div>
+</div>
+</div>
+
+<div class="menu-item">
+<img src="images/Keema Rice.jpeg">
+<div class="menu-details">
+<div class="menu-top"><span>Keema Rice 🍖</span><span class="price">₹430</span></div>
+<div class="description">Minced but maximum flavour 😎</div>
+</div>
+</div>
+
+<div class="menu-item">
+<img src="images/Chicken Pulao.jpeg">
+<div class="menu-details">
+<div class="menu-top"><span>Chicken Pulao 🍗</span><span class="price">₹340</span></div>
+<div class="description">Simple, classy, legendary 👑</div>
+</div>
+</div>
+
+</div>
+
+<!-- ================= ROTI ================= -->
+<div id="roti" class="section">
+<h2>Roti Section 🫓🔥</h2>
+
+<div class="menu-item">
+<img src="images/Butter Naan.jpeg">
+<div class="menu-details">
+<div class="menu-top"><span>Butter Naan 🧈</span><span class="price">₹60</span></div>
+<div class="description">Soft like your Sunday morning mood 😴</div>
+</div>
+</div>
+
+<div class="menu-item">
+<img src="images/Garlic Naan.jpeg">
+<div class="menu-details">
+<div class="menu-top"><span>Garlic Naan 🧄</span><span class="price">₹80</span></div>
+<div class="description">Strong enough to keep vampires away 🧛‍♂️😂</div>
+</div>
+</div>
+
+<div class="menu-item">
+<img src="images/Cheese Naan.jpeg">
+<div class="menu-details">
+<div class="menu-top"><span>Cheese Naan 🧀</span><span class="price">₹120</span></div>
+<div class="description">Cheese pull longer than your semester 😆</div>
+</div>
+</div>
+
+<div class="menu-item">
+<img src="images/Tandoori Roti.jpeg">
+<div class="menu-details">
+<div class="menu-top"><span>Tandoori Roti 🔥</span><span class="price">₹40</span></div>
+<div class="description">Straight from fire, zero drama 😎</div>
+</div>
+</div>
+
+<div class="menu-item">
+<img src="images/Butter Roti.jpeg">
+<div class="menu-details">
+<div class="menu-top"><span>Butter Roti 🧈</span><span class="price">₹50</span></div>
+<div class="description">Simple but extra like your best friend 😂</div>
+</div>
+</div>
+
+<div class="menu-item">
+<img src="images/Laccha Paratha.jpeg">
+<div class="menu-details">
+<div class="menu-top"><span>Laccha Paratha 🫓</span><span class="price">₹90</span></div>
+<div class="description">Layered like your complicated love story 😜</div>
+</div>
+</div>
+
+<div class="menu-item">
+<img src="images/Aloo Paratha.jpeg">
+<div class="menu-details">
+<div class="menu-top"><span>Aloo Paratha 🥔</span><span class="price">₹100</span></div>
+<div class="description">Stuffed more than your exam syllabus 📚😂</div>
+</div>
+</div>
+
+<div class="menu-item">
+<img src="images/Paneer Paratha.jpeg">
+<div class="menu-details">
+<div class="menu-top"><span>Paneer Paratha 🧀</span><span class="price">₹120</span></div>
+<div class="description">Paneer inside because outside world is tough 💪😆</div>
+</div>
+</div>
+
+<div class="menu-item">
+<img src="images/Missi Roti.jpeg">
+<div class="menu-details">
+<div class="menu-top"><span>Missi Roti 🌾</span><span class="price">₹70</span></div>
+<div class="description">Traditional but still trending 😎</div>
+</div>
+</div>
+
+<div class="menu-item">
+<img src="images/Roomali Roti.jpeg">
+<div class="menu-details">
+<div class="menu-top"><span>Roomali Roti 🧣</span><span class="price">₹60</span></div>
+<div class="description">So thin it needs winter jacket 😂</div>
+</div>
+</div>
+
+</div>
+
+
+<!-- ================= SALADS ================= -->
+<div id="salads" class="section">
+
+<h2>Veg Salads 🥗✨</h2>
+
+<div class="menu-item">
+<img src="images/Green Garden Salad.jpeg">
+<div class="menu-details">
+<div class="menu-top"><span>Green Garden Salad 🌿</span><span class="price">₹120</span></div>
+<div class="description">Healthy but still dramatic 😎</div>
+</div>
+</div>
+
+<div class="menu-item">
+<img src="images/Greek Salad.jpeg">
+<div class="menu-details">
+<div class="menu-top"><span>Greek Salad 🧀</span><span class="price">₹220</span></div>
+<div class="description">Straight from Greece with love 🇬🇷❤️</div>
+</div>
+</div>
+
+<div class="menu-item">
+<img src="images/Paneer Tossed Salad.jpeg">
+<div class="menu-details">
+<div class="menu-top"><span>Paneer Tossed Salad 🧈</span><span class="price">₹240</span></div>
+<div class="description">Paneer trying to be healthy 😂</div>
+</div>
+</div>
+
+<div class="menu-item">
+<img src="images/Fresh Fruit Salad.jpeg">
+<div class="menu-details">
+<div class="menu-top"><span>Fresh Fruit Salad 🍎</span><span class="price">₹180</span></div>
+<div class="description">Vitamin party in one bowl 🎉</div>
+</div>
+</div>
+
+<div class="menu-item">
+<img src="images/Sweet Corn Salad.jpeg">
+<div class="menu-details">
+<div class="menu-top"><span>Sweet Corn Salad 🌽</span><span class="price">₹160</span></div>
+<div class="description">Sweet like your weekend mood 😄</div>
+</div>
+</div>
+
+<div class="menu-item">
+<img src="images/Sprouts Power Salad.jpeg">
+<div class="menu-details">
+<div class="menu-top"><span>Sprouts Power Salad 💪</span><span class="price">₹170</span></div>
+<div class="description">Gym trainer approved 😎</div>
+</div>
+</div>
+
+<div class="menu-item">
+<img src="images/Avocado Salad.jpeg">
+<div class="menu-details">
+<div class="menu-top"><span>Avocado Salad 🥑</span><span class="price">₹280</span></div>
+<div class="description">Too classy for normal life 👑</div>
+</div>
+</div>
+
+<div class="menu-item">
+<img src="images/Veg Caesar Salad.jpeg">
+<div class="menu-details">
+<div class="menu-top"><span>Veg Caesar Salad 🥗</span><span class="price">₹260</span></div>
+<div class="description">Roman empire approved ⚔️</div>
+</div>
+</div>
+
+
+<h2>Non-Veg Salads 🍗🔥</h2>
+
+<div class="menu-item">
+<img src="images/Grilled Chicken Salad.jpeg">
+<div class="menu-details">
+<div class="menu-top"><span>Grilled Chicken Salad 🍗</span><span class="price">₹320</span></div>
+<div class="description">Healthy but with protein attitude 💪</div>
+</div>
+</div>
+
+<div class="menu-item">
+<img src="images/Chicken Caesar Salad.jpeg">
+<div class="menu-details">
+<div class="menu-top"><span>Chicken Caesar Salad 🥗</span><span class="price">₹350</span></div>
+<div class="description">Caesar upgraded to warrior mode ⚔️🔥</div>
+</div>
+</div>
+
+<div class="menu-item">
+<img src="images/Boiled Egg Salad.jpeg">
+<div class="menu-details">
+<div class="menu-top"><span>Boiled Egg Salad 🥚</span><span class="price">₹180</span></div>
+<div class="description">Egg trying to stay fit 😆</div>
+</div>
+</div>
+
+<div class="menu-item">
+<img src="images/Tuna Salad.jpeg">
+<div class="menu-details">
+<div class="menu-top"><span>Tuna Salad 🐟</span><span class="price">₹420</span></div>
+<div class="description">Straight from ocean with confidence 🌊</div>
+</div>
+</div>
+
+<div class="menu-item">
+<img src="images/Prawn Salad.jpeg">
+<div class="menu-details">
+<div class="menu-top"><span>Prawn Salad 🍤</span><span class="price">₹480</span></div>
+<div class="description">Luxury seafood flex 💎</div>
+</div>
+</div>
+
+<div class="menu-item">
+<img src="images/Smoked Chicken Salad.jpeg">
+<div class="menu-details">
+<div class="menu-top"><span>Smoked Chicken Salad 🔥</span><span class="price">₹360</span></div>
+<div class="description">Smoky enough to start drama 😎</div>
+</div>
+</div>
+
+<div class="menu-item">
+<img src="images/Turkey Salad.jpeg">
+<div class="menu-details">
+<div class="menu-top"><span>Turkey Salad 🦃</span><span class="price">₹390</span></div>
+<div class="description">Turkey living its best salad life 😂</div>
+</div>
+</div>
+
+<div class="menu-item">
+<img src="images/Seafood Mix Salad.jpeg">
+<div class="menu-details">
+<div class="menu-top"><span>Seafood Mix Salad 🌊</span><span class="price">₹450</span></div>
+<div class="description">Ocean party in one bowl 🐟🍤</div>
+</div>
+</div>
+
+</div>
+<!-- ================= BEVERAGES ================= -->
+<div id="beverages" class="section">
+
+<h2>Fresh Juices 🧃🍊</h2>
+
+<div class="menu-item">
+<img src="images/Orange Juice.jpeg">
+<div class="menu-details">
+<div class="menu-top"><span>Orange Juice 🍊</span><span class="price">₹140</span></div>
+<div class="description">Vitamin C stronger than your WiFi signal 😆</div>
+</div>
+</div>
+
+<div class="menu-item">
+<img src="images/Watermelon Juice.jpeg">
+<div class="menu-details">
+<div class="menu-top"><span>Watermelon Juice 🍉</span><span class="price">₹130</span></div>
+<div class="description">Summer’s official cooling minister 🌞</div>
+</div>
+</div>
+
+<div class="menu-item">
+<img src="images/Mango Juice.jpeg">
+<div class="menu-details">
+<div class="menu-top"><span>Mango Juice 🥭</span><span class="price">₹160</span></div>
+<div class="description">King of fruits, no democracy here 👑😂</div>
+</div>
+</div>
+
+<div class="menu-item">
+<img src="images/Pineapple Juice.jpeg">
+<div class="menu-details">
+<div class="menu-top"><span>Pineapple Juice 🍍</span><span class="price">₹150</span></div>
+<div class="description">Sweet but with spicy attitude 😎</div>
+</div>
+</div>
+
+<div class="menu-item">
+<img src="images/Mosambi Juice.jpeg">
+<div class="menu-details">
+<div class="menu-top"><span>Mosambi Juice 🍈</span><span class="price">₹140</span></div>
+<div class="description">Doctor recommended, taste approved 💪</div>
+</div>
+</div>
+
+<div class="menu-item">
+<img src="images/Pomegranate Juice.jpeg">
+<div class="menu-details">
+<div class="menu-top"><span>Pomegranate Juice 🍷</span><span class="price">₹180</span></div>
+<div class="description">Red but no anger issues 😂</div>
+</div>
+</div>
+
+<div class="menu-item">
+<img src="images/Apple Juice.jpeg">
+<div class="menu-details">
+<div class="menu-top"><span>Apple Juice 🍎</span><span class="price">₹150</span></div>
+<div class="description">One glass keeps laziness away 😆</div>
+</div>
+</div>
+
+
+
+<h2>Mocktails 🍹✨</h2>
+
+<div class="menu-item">
+<img src="images/Virgin Mojito.jpeg">
+<div class="menu-details">
+<div class="menu-top"><span>Virgin Mojito 🍃</span><span class="price">₹220</span></div>
+<div class="description">Mint so fresh it has its own fan club 🌿</div>
+</div>
+</div>
+
+<div class="menu-item">
+<img src="images/Blue Lagoon.jpeg">
+<div class="menu-details">
+<div class="menu-top"><span>Blue Lagoon 💙</span><span class="price">₹240</span></div>
+<div class="description">Ocean vibes without swimming 🌊😂</div>
+</div>
+</div>
+
+<div class="menu-item">
+<img src="images/Strawberry Sparkle.jpeg">
+<div class="menu-details">
+<div class="menu-top"><span>Strawberry Sparkle 🍓</span><span class="price">₹230</span></div>
+<div class="description">Sweet enough to fall in love 😍</div>
+</div>
+</div>
+
+<div class="menu-item">
+<img src="images/Pina Colada.jpeg">
+<div class="menu-details">
+<div class="menu-top"><span>Pina Colada 🥥</span><span class="price">₹250</span></div>
+<div class="description">Vacation in a glass 🏖️</div>
+</div>
+</div>
+
+<div class="menu-item">
+<img src="images/Kiwi Blast.jpeg">
+<div class="menu-details">
+<div class="menu-top"><span>Kiwi Blast 🥝</span><span class="price">₹240</span></div>
+<div class="description">Green but not jealous 😆</div>
+</div>
+</div>
+
+<div class="menu-item">
+<img src="images/Fruit Punch.jpeg">
+<div class="menu-details">
+<div class="menu-top"><span>Fruit Punch 🍹</span><span class="price">₹260</span></div>
+<div class="description">Punch stronger than exam pressure 😂</div>
+</div>
+</div>
+
+<div class="menu-item">
+<img src="images/Watermelon Mojito.jpeg">
+<div class="menu-details">
+<div class="menu-top"><span>Watermelon Mojito 🍉</span><span class="price">₹230</span></div>
+<div class="description">Mint + melon = magic formula ✨</div>
+</div>
+</div>
+
+
+
+<h2>Hot Beverages ☕🔥</h2>
+
+<div class="menu-item">
+<img src="images/Espresso.jpeg">
+<div class="menu-details">
+<div class="menu-top"><span>Espresso ☕</span><span class="price">₹120</span></div>
+<div class="description">Small cup, big attitude 😎</div>
+</div>
+</div>
+
+<div class="menu-item">
+<img src="images/Cappuccino.jpeg">
+<div class="menu-details">
+<div class="menu-top"><span>Cappuccino ☕</span><span class="price">₹160</span></div>
+<div class="description">Foamy like your dramatic stories 😂</div>
+</div>
+</div>
+
+<div class="menu-item">
+<img src="images/Café Latte.jpeg">
+<div class="menu-details">
+<div class="menu-top"><span>Café Latte ☕</span><span class="price">₹170</span></div>
+<div class="description">Milk + coffee = perfect relationship 💕</div>
+</div>
+</div>
+
+<div class="menu-item">
+<img src="images/Masala Tea.jpeg">
+<div class="menu-details">
+<div class="menu-top"><span>Masala Tea 🍵</span><span class="price">₹60</span></div>
+<div class="description">Indian energy booster 🇮🇳🔥</div>
+</div>
+</div>
+
+<div class="menu-item">
+<img src="images/Green Tea.jpeg">
+<div class="menu-details">
+<div class="menu-top"><span>Green Tea 🍃</span><span class="price">₹80</span></div>
+<div class="description">Trying to be healthy again? 😆</div>
+</div>
+</div>
+
+<div class="menu-item">
+<img src="images/Hot Chocolate.jpeg">
+<div class="menu-details">
+<div class="menu-top"><span>Hot Chocolate 🍫</span><span class="price">₹190</span></div>
+<div class="description">Chocolate that hugs you warmly 🤗</div>
+</div>
+</div>
+
+</div>
+
 
 <script>
+const buttons=document.querySelectorAll(".toggle button");
+const sections=document.querySelectorAll(".section");
 
-function showVeg(){
-document.getElementById("vegSection").style.display="block";
-document.getElementById("nonVegSection").style.display="none";
-document.getElementById("vegBtn").classList.add("active");
-document.getElementById("nonVegBtn").classList.remove("active");
-}
-
-function showNonVeg(){
-document.getElementById("vegSection").style.display="none";
-document.getElementById("nonVegSection").style.display="block";
-document.getElementById("nonVegBtn").classList.add("active");
-document.getElementById("vegBtn").classList.remove("active");
-}
-
+buttons.forEach(button=>{
+button.addEventListener("click",()=>{
+sections.forEach(sec=>sec.classList.remove("active"));
+buttons.forEach(btn=>btn.classList.remove("active"));
+document.getElementById(button.dataset.section).classList.add("active");
+button.classList.add("active");
+});
+});
 </script>
 
 </body>
